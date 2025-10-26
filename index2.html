@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pizzaria Sabor da Serra — Cardápio</title>
+  <meta name="description" content="Cardápio digital da Pizzaria Sabor da Serra — peça pelo WhatsApp e veja nossa localização.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+   :root {
+  --orange: #ff8c00;
+  --brown: #5a3418;
+  --wood: #8b5a3c;
+  --cream: #fff8e1;
+  --muted: rgba(255, 248, 225, 0.85);
+  --glass: rgba(255, 248, 225, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  background: url('madeira-textura.jpg') repeat, linear-gradient(180deg, #3b1f0e, #5b2c10);
+  background-blend-mode: overlay;
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+}
+
+/* ==== HEADER ==== */
+header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  background: linear-gradient(90deg, var(--orange), #b35c1e);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background 0.3s ease, padding 0.3s ease;
+}
+
+header.scrolled {
+  background: rgba(91, 44, 16, 0.9);
+  padding: 10px 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+}
+
+.brand {
+  flex: 1;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.brand p {
+  margin: 4px 0 0 0;
+  opacity: 0.95;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  background: var(--brown);
+  color: var(--cream);
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+}
+
+.btn.alt {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ==== HERO ==== */
+main {
+  max-width: 1100px;
+  margin: 22px auto;
+  padding: 0 16px;
+}
+
+.hero {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.05));
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.headline {
+  font-size: 22px;
+  margin: 10px 0 6px 0;
+}
+
+.subhead {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ==== GRID CORRIGIDA ==== */
+.grid {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+/* ==== CATEGORY (cada tipo de pizza) ==== */
+.category {
+  flex: 1 1 340px;
+  max-width: 360px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.04));
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: auto !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.cat-body {
+  flex: 1;
+}
+
+.cat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cat-header h3 {
+  margin: 0;
+  color: var(--orange);
+}
+
+.sizes {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.cat-img {
+  width: 120px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transform: scale(0.98);
+  transition: transform 0.25s ease;
+}
+
+.category:hover .cat-img {
+  transform: scale(1.02);
+}
+
+/* ==== LISTAGEM DE PIZZAS ==== */
+ul.pizzas {
+  list-style: none;
+  padding: 8px 0;
+  margin: 6px 0;
+}
+
+li.pizza {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  align-items: flex-start;
+  transition: background 0.12s ease;
+}
+
+li.pizza:hover {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.03));
+}
+
+.pizza-name {
+  font-weight: 600;
+}
+
+.pizza-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.price {
+  font-weight: 800;
+  color: var(--cream);
+  min-width: 60px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ==== WHATSAPP FLOAT ==== */
+.whats-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+}
+
+.whats-btn {
+  background: #25D366;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 4px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.18s ease;
+}
+
+.whats-btn:hover {
+  transform: translateY(-6px);
+}
+
+.whats-btn img {
+  width: 36px;
+  height: 36px;
+}
+
+/* ==== MAPA FIXO ==== */
+.map-fixed {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 55;
+}
+
+.map-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+/* ==== FOOTER ==== */
+footer {
+  margin-top: 26px;
+  padding: 18px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ==== ANIMAÇÃO ENTRADA ==== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: enter 0.6s forwards;
+}
+
+@keyframes enter {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==== RESPONSIVIDADE ==== */
+@media (max-width: 880px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  li.pizza {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price {
+    text-align: left;
+    margin-top: 4px;
+  }
+
+  .cat-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  mark {
+  background-color: var(--orange);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="imagens/Logo.jpg" alt="Logo" class="logo" onerror="this.style.display='none'">
+    <div class="brand">
+      <h1>Pizzaria Sabor da Serra</h1>
+      <p>Tradição e qualidade em cada fatia que representa o sabor da Serra!!</p>
+      <p><mark>Observação: Cobramos taxas de Entrega!</mark></p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="https://wa.me/5583991818396" target="_blank">📲 Pedir</a>
+      <a class="btn alt" href="https://maps.app.goo.gl/T8kTGFDsVfVhTLAR9?g_st=ipc" target="_blank">📍 Ver no mapa</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero fade-in" style="margin-top:14px">
+      <div class="hero-left">
+        <span class="tag">Artesanal • Entrega Rápida • Massa Crocante</span>
+        <div class="headline">Tradição e qualidade em cada fatia!</div>
+        <p class="subhead">Explore nosso cardápio abaixo e clique em <strong>Pedir</strong> para solicitar pelo WhatsApp — simples e rápido.</p>
+      </div>
+      <img src="imagens/Ilustrativo.jpg" alt="Pizza" style="width:220px;height:120px;object-fit:cover;border-radius:10px;box-shadow:0 8px 18px rgba(0,0,0,0.3)">
+    </section>
+
+    <div class="grid">
+      <!-- Tradicionais -->
+      <article class="category fade-in" style="animation-delay:.05s">
+        <div class="cat-body">
+          <div class="cat-header"><h3>Pizzas Tradicionais⚜️</h3><div class="sizes">P: R$20 • M: R$30 • G: R$40 • GG: R$50 • XG: R$60</div></div>
+          <ul class="pizzas">
+             <li class="pizza"><div><div class="pizza-name">Azeitona</div><div class="pizza-desc">Molho, mussarela, azeitona, orégano</div></li>
+                <img class="cat-img" src="imagens/Azeitona.jpg" alt="Pizza de Azeitona">
+
+            <li class="pizza"><div><div class="pizza-name">Batata Palha</div><div class="pizza-desc">Molho, mussarela e batata palha</div></div></li>
+                <img class="cat-img" src="imagens/BatataPalha.jpg" alt="Pizza de Azeitona">
+
+            <li class="pizza"><div><div class="pizza-name">Brasileira</div><div class="pizza-desc">Molho, mussarela, milho, ervilha e orégano</div></div></li>
+                <img class="cat-img" src="imagens/Brasileira.jpg" alt="Pizza Brasileira">
+
+            <li class="pizza"><div><div class="pizza-name">Calabresa</div><div class="pizza-desc">Molho, mussarela e calabresa</div></div></li>
+                <img class="cat-img" src="imagens/Calabresa.jpg" alt="Pizza de Calabresa">
+
+            <li class="pizza"><div><div class="pizza-name">Catupiry</div><div class="pizza-desc">Molho, mussarela, catupiry e orégano</div></div></li>
+                <img class="cat-img" src="imagens/Catupiry.jpg" alt="Pizza de Catupiry">
+
+            <li class="pizza"><div><div class="pizza-name">Frango</div><div class="pizza-desc">Molho, mussarela e frango</div></div></li>
+                <img class="cat-img" src="imagens/Frango.jpg" alt="Pizza de Frango">
+
+            <li class="pizza"><div><div class="pizza-name">Mussarela</div><div class="pizza-desc">Molho, mussarela, tomate e orégano</div></div></li>
+                <img class="cat-img" src="imagens/Mussarela.jpg" alt="Pizza de Mussarela">
+
+            <li class="pizza"><div><div class="pizza-name">Romana</div><div class="pizza-desc">Molho, mussarela e presunto</div></div></li>
+                <img class="cat-img" src="imagens/Romana.jpg" alt="Pizza de Romana">
+          </ul>
+        </div>
+      </article>
+
+      <!-- Nobres -->
+      <article class="category fade-in" style="animation-delay:.15s">
+        <div class="cat-body">
+          <div class="cat-header"><h3>Pizzas Nobres👑</h3><div class="sizes">P: R$25 • M: R$35 • G: R$45 • GG: R$55 • XG: R$65</div></div>
+          <ul class="pizzas">
+           <li class="pizza"><div><div class="pizza-name">Atum</div><div class="pizza-desc">Molho, mussarela, atum e orégano</div></div></li>
+                <img class="cat-img" src="imagens/Atum.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Camarão</div><div class="pizza-desc">Molho, mussarela, camarão e orégano</div></div></li>
+                <img class="cat-img" src="imagens/Camarão.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Calabresa com Cheedar</div><div class="pizza-desc">Molho, mussarela, calabresa, cheedar e orégano</div></div></li>
+                <img class="cat-img" src="imagens/CalabresaCheddar.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Calabresa com Catupiry</div><div class="pizza-desc">Molho, mussarela, calabresa, catupiry e orégano</div></div></li>
+                <img class="cat-img" src="imagens/CalabresaCatupiry.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Carne de Sol</div><div class="pizza-desc">Molho, mussarela e carne de sol</div></div></li>
+                <img class="cat-img" src="imagens/CarneSol.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Carne de Sol na Nata</div><div class="pizza-desc">Molho, mussarela, carne de sol e nata</div></div></li>
+                <img class="cat-img" src="imagens/CarneSolNata.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Frango Catupiry</div><div class="pizza-desc">Molho, mussarela, milho, azeitona, frango e catupiry</div></div></li>
+                <img class="cat-img" src="imagens/FrangoCatupiry.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Frango Cheedar</div><div class="pizza-desc">Molho, mussarela, milho, azeitona, frango e cheedar</div></div></li>
+                <img class="cat-img" src="imagens/FrangoCheddar.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Lombo Canadense</div><div class="pizza-desc">Molho, mussarela e lombo canadense</div></div></li>
+                <img class="cat-img" src="imagens/Lombo.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Moda da Casa</div><div class="pizza-desc">Molho, mussarela, calabresa, presunto, frango, milho e outros</div></div></li>
+                <img class="cat-img" src="imagens/ModaCasa.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Peito de Peru</div><div class="pizza-desc">Molho, mussarela e peito de peru</div></div></li>
+                <img class="cat-img" src="imagens/PeitoPeru.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Portuguesa</div><div class="pizza-desc">Molho, mussarela, presunto, cebola, ovos, azeitona e orégano</div></div></li>
+                <img class="cat-img" src="imagens/Portuguesa.jpg" alt="Nobres">
+
+            <li class="pizza"><div><div class="pizza-name">Q'Delícia</div><div class="pizza-desc">Molho, mussarela, bolonhesa, cebola, batata palha e orégano</div></div></li>
+                <img class="cat-img" src="imagens/QDelicia.jpg" alt="Nobres">
+          </ul>
+        </div>
+      </article>
+
+      <!-- Doces -->
+      <article class="category fade-in" style="animation-delay:.25s">
+        <div class="cat-body">
+          <div class="cat-header"><h3>Pizzas Doces 🍫</h3><div class="sizes">P: R$25 • M: R$35 • G: R$45 • GG: R$55 • XG: R$65</div></div>
+          <ul class="pizzas">
+            <li class="pizza"><div><div class="pizza-name">Banana</div><div class="pizza-desc">Mussarela, Leite condensado, banana, açúcar e canela</div></div></li>
+                <img class="cat-img" src="imagens/Banana.jpg" alt="Pizza de Banana com Canela">
+
+            <li class="pizza"><div><div class="pizza-name">Chocolate ao Leite</div><div class="pizza-desc"> Mussarela e chocolate ao leite</div></div></li>
+                <img class="cat-img" src="imagens/Chocolate.jpg" alt="Pizza de Chocolate ao Leite">
+
+            <li class="pizza"><div><div class="pizza-name">Chocolate Branco</div><div class="pizza-desc">Leite condensado, mussarela e chocolate branco</div></div></li>
+                <img class="cat-img" src="imagens/ChocolateBranco.jpg" alt="Pizza de Chocolate Branco">
+
+            <li class="pizza"><div><div class="pizza-name">Cartola</div><div class="pizza-desc">Mussarela, banana e chocolate ao leite</div></div></li>
+                <img class="cat-img" src="imagens/Cartola.jpg" alt="Pizza de Cartola">
+
+            <li class="pizza"><div><div class="pizza-name">Dois Amores</div><div class="pizza-desc">Mussarela,Leite condensado, chocolate preto e branco</div></div></li>
+                <img class="cat-img" src="imagens/DoisAmores.jpg" alt="Pizza de Dois Amores">
+
+
+            <li class="pizza"><div><div class="pizza-name">Morango</div><div class="pizza-desc">Mussarela, morango e leite condensado</div></div></li>
+                <img class="cat-img" src="imagens/Morango.jpg" alt="Pizza de Morango">
+
+            <li class="pizza"><div><div class="pizza-name">Prestígio</div><div class="pizza-desc">Mussarela,chocolate ao leite, coco ralado e leite condensado</div></div></li>
+               <img class="cat-img" src="imagens/Prestigio.jpg" alt="Pizza de Prestígio">
+               
+            <li class="pizza"><div><div class="pizza-name">Sonho de Valsa</div><div class="pizza-desc">Mussarela, chocolate ao leite e bombom Sonho de Valsa</div></div></li>
+                <img class="cat-img" src="imagens/Sonho.jpg" alt="Pizza de Sonho de Valsa">
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <div class="whats-float">
+    <a class="whats-btn" href="https://wa.me/5583991818396" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+  </div>
+
+  <div class="map-fixed">
+    <a class="map-btn" href="https://maps.app.goo.gl/T8kTGFDsVfVhTLAR9?g_st=ipc" target="_blank">📍 Ver no mapa</a>
+  </div>
+
+  <footer>
+    &copy; 2012 Pizzaria Sabor da Serra — Todos os direitos reservados
+  </footer>
+
+  <script>
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (window.scrollY > 30) header.classList.add("scrolled");
+  else header.classList.remove("scrolled");
+});
+</script>
+</body>
+</html>
